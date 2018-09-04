@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>INDEX</title>
+
+    <!-- Bootstrap -->
+   
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+    
+     
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+        <link href="css/style.css" rel="stylesheet">
+  </head>
+<body>
+<header>
+   <!-- main-menu -->
+    <div class="main-menu">
+      <div class="container">
+        <nav id='cssmenu'>
+          <div id="head-mobile"></div>
+          <div class="button">Menu</div>
+          <ul class="nav-ul">
+          <li class='active'><a href='#'>HOME</a></li>
+          <li><a href='#'>Attorneys</a>
+             <ul>
+                <li><a href='#'>Ronald Zimmet Sr</a></li>
+                <li><a href='#'>Ronald Zimmet Jr</a></li>
+             </ul>
+          </li>
+          <li><a href='#'>Personal Injury </a>
+             <ul>
+                <li><a href='#'>Premises Liability </a>
+                  <ul>
+                      <li><a href='#'>Florida Slip and Fall Accident Attorneys</a></li>
+                   </ul>
+                </li>
+                <li><a href='#'>Nursing Home Abuse</a></li>
+                <li><a href='#'>Wrongful Death</a></li>
+             </ul>
+          </li>
+          <li><a href='#'>Vehicle Accidents</a>
+            <ul>
+                <li><a href='#'>Car Accidents</a>
+                  <ul>
+                      <li><a href='#'>Rear End Car Accidents</a></li>
+                      <li><a href='#'>Texting and Driving Accidents</a></li>
+                   </ul>
+                </li>
+                <li><a href='#'>Truck Accidents</a></li>
+                <li><a href='#'>Motorcycle Accidents</a></li>
+                <li><a href='#'>Boat Accidents</a></li>
+                <li><a href='#'>Bicycle Accidents</a></li>
+                <li><a href='#'>Pedestrian Accidents</a></li>
+             </ul>
+          </li>
+          <li><a href='#'>Medical Malpractice</a></li>
+          <li><a href='#'>Testimonials</a></li>
+          <li><a href='#'>Resources</a>
+            <ul>
+                <li><a href='#'>BLOG</a>
+                  <ul>
+                      <li><a href='#'>menu item</a></li>
+                  </ul>
+                </li>
+                <li><a href='#'>FAQ</a></li>
+                <li><a href='#'>Library</a></li>
+            </ul>
+          </li>
+          <li><a href='#'>Contact us</a></li>
+          </ul>
+          </nav>
+      </div>
+    </div>
+  <!--end main-menu -->
+</header>
+
+  
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+  (function($) {
+$.fn.menumaker = function(options) {  
+ var cssmenu = $(this), settings = $.extend({
+   format: "dropdown",
+   sticky: false
+ }, options);
+ return this.each(function() {
+   $(this).find(".button").on('click', function(){
+     $(this).toggleClass('menu-opened');
+     var mainmenu = $(this).next('ul');
+     if (mainmenu.hasClass('open')) { 
+       mainmenu.slideToggle().removeClass('open');
+     }
+     else {
+       mainmenu.slideToggle().addClass('open');
+       if (settings.format === "dropdown") {
+         mainmenu.find('ul').show();
+       }
+     }
+   });
+   cssmenu.find('li ul').parent().addClass('has-sub');
+multiTg = function() {
+     cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
+     cssmenu.find('.submenu-button').on('click', function() {
+       $(this).toggleClass('submenu-opened');
+       if ($(this).siblings('ul').hasClass('open')) {
+         $(this).siblings('ul').removeClass('open').slideToggle();
+       }
+       else {
+         $(this).siblings('ul').addClass('open').slideToggle();
+       }
+     });
+   };
+   if (settings.format === 'multitoggle') multiTg();
+   else cssmenu.addClass('dropdown');
+   if (settings.sticky === true) cssmenu.css('position', 'fixed');
+resizeFix = function() {
+  var mediasize = 1000;
+     if ($( window ).width() > mediasize) {
+       cssmenu.find('ul').show();
+     }
+     if ($(window).width() <= mediasize) {
+       cssmenu.find('ul').hide().removeClass('open');
+     }
+   };
+   resizeFix();
+   return $(window).on('resize', resizeFix);
+ });
+  };
+})(jQuery);
+
+(function($){
+$(document).ready(function(){
+$("#cssmenu").menumaker({
+   format: "multitoggle"
+});
+});
+})(jQuery);
+
+</script>
+
+
+  </body>
+</html>
